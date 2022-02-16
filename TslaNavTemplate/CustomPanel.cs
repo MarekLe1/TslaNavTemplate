@@ -8,10 +8,17 @@ namespace TslaNavTemplate
     {
         private static BitmapSource GetEmbeddedImage(string name)
         {
+            try
+            {
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                System.IO.Stream stream = assembly.GetManifestResourceStream(name);
+                return BitmapFrame.Create(stream);
+            }
+            catch
+            {
+                return null;
+            }
 
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            System.IO.Stream stream = assembly.GetManifestResourceStream(name);
-            return BitmapFrame.Create(stream);
 
         }
 
@@ -34,30 +41,30 @@ namespace TslaNavTemplate
                     RibbonButton button1 = new RibbonButton();
                     button1.IsEnabled = true;
                     button1.IsVisible = true;
-                    button1.Image = GetEmbeddedImage("TeslaFamilyBrowser.Resources.tesla_icon_active.png");
-                    button1.LargeImage = GetEmbeddedImage("TeslaFamilyBrowser.Resources.tesla_icon_active.png");
+                    button1.Image = GetEmbeddedImage("TslaNavTemplate.Resources.tesla_icon_active.png");
+                    button1.LargeImage = GetEmbeddedImage("TslaNavTemplate.Resources.tesla_icon_active.png");
                     button1.ShowImage = true;
                     button1.Size = RibbonItemSize.Standard;
                     button1.ShowText = true;
                     button1.ResizeStyle = RibbonItemResizeStyles.HideText;
-                    button1.Id = "TSLA_ButtonId";
-                    button1.Name = "TslaButtonName";
-                    button1.Text = "TeslaButton";
+                    button1.Id = "TSLA_ButtonId1";
+                    button1.Name = "TslaButtonName1";
+                    button1.Text = "TeslaButton1";
                     button1.Orientation = System.Windows.Controls.Orientation.Vertical;
                     button1.CommandHandler = new TestCommand();
 
                     RibbonButton button2 = new RibbonButton();
                     button2.IsEnabled = true;
                     button2.IsVisible = true;
-                    button2.Image = GetEmbeddedImage("TeslaFamilyBrowser.Resources.tesla_icon_active.png");
-                    button2.LargeImage = GetEmbeddedImage("TeslaFamilyBrowser.Resources.tesla_icon_active.png");
+                    button2.Image = GetEmbeddedImage("TslaNavTemplate.Resources.tesla_icon_active.png");
+                    button2.LargeImage = GetEmbeddedImage("TslaNavTemplate.Resources.tesla_icon_active.png");
                     button2.ShowImage = true;
                     button2.Size = RibbonItemSize.Standard;
                     button2.ShowText = true;
                     button2.ResizeStyle = RibbonItemResizeStyles.HideText;
-                    button2.Id = "TSLA_ButtonId";
-                    button2.Name = "TslaButtonName";
-                    button2.Text = "TeslaButton";
+                    button2.Id = "TSLA_ButtonId2";
+                    button2.Name = "TslaButtonName2";
+                    button2.Text = "TeslaButton2";
                     button2.Orientation = System.Windows.Controls.Orientation.Vertical;
                     button2.CommandHandler = new TestCommand();
 
