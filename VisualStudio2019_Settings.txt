@@ -1,0 +1,12 @@
+Application type: .NET Framework 4.7 *dll class library
+
+Additional references:
+   AdWindows.dll
+   Autodesk.Navisworks.Api
+   System.Xaml
+
+Post-build action:
+xcopy/Y "$(TargetDir)." "C:\Program Files\Autodesk\Navisworks Manage 2020\Plugins\TslaNavTemplate\"
+
+Debug start application:
+C:\Program Files\Autodesk\Navisworks Manage 2020\Roamer.exe
