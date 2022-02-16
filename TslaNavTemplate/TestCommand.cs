@@ -15,7 +15,8 @@ namespace TslaNavTemplate
 
         public void Execute(object parameter)
         {
-            MessageBox.Show("Hello Again!");
+            string docTitle = Autodesk.Navisworks.Api.Application.ActiveDocument.Title;
+            MessageBox.Show("Hello Again!" + Environment.NewLine + "Current doc name: " + docTitle);
         }
     }
 }

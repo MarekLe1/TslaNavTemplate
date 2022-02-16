@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="TemplateWindow" Height="200" Width="200">
+        Title="TemplateWindow" Height="400" Width="350">
     <Grid Background="White">
         <Border BorderThickness="1" Margin="5" BorderBrush="Black"/>
         <TextBox VerticalAlignment="Top" Margin="10" Text="Hello World!" HorizontalAlignment="Center"/>
-        <Button Content="Add New Panel to Home Tab" Height="20" Margin="10,10,10,10" VerticalAlignment="Bottom" Click="Button_Click"/>
+        <Button Content="Add New Panel to Home Tab" Height="20" Margin="10,10,10,10" VerticalAlignment="Bottom" Click="BtnClickAddPanel"/>
+        <Button Content="Check loaded documents" Height="20" Margin="10,10,10,35" VerticalAlignment="Bottom" Click="BtnClickCheckDocuments"/>
 
     </Grid>
 </Window>

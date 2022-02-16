@@ -10,3 +10,6 @@ xcopy/Y "$(TargetDir)." "C:\Program Files\Autodesk\Navisworks Manage 2020\Plugin
 
 Debug start application:
 C:\Program Files\Autodesk\Navisworks Manage 2020\Roamer.exe
+
+Resources set as EmbeddedResource
+All references Copy Local property set to false

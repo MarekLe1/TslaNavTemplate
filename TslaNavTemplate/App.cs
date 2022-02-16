@@ -4,15 +4,42 @@ using GUI;
 
 namespace TslaNavTemplate
 {
+
     [PluginAttribute("TslaTemplate", "TSLA", DisplayName = "Tesla template plugin")]
     public class App : AddInPlugin
-    {        
+    {
+        #region Configuration and assembly version
+
+#if     DEBUG2020 || RELEASE2020
+        public const string AssemblyYear = "2020";
+#elif   DEBUG2021 || RELEASE2021
+        public const string AssemblyYear = "2021";
+#elif   DEBUG2022 || RELEASE2022
+        public const string AssemblyYear = "2022";
+#endif
+        //increment on every release build
+        public const string AssemblyMinorVersion = "1"; //new functions
+        public const string AssemblyRevisionVersion = "1"; //significant fixes and improvements
+        public const string AssemblyBuildVersion = "1"; //small fixes and improvements
+
+        public static string PlugInVersion
+        {
+            get
+            {
+                return string.Format("{0}.{1}.{2}.{3}",
+                                AssemblyYear,
+                                AssemblyMinorVersion,
+                                AssemblyRevisionVersion,
+                                AssemblyBuildVersion);
+            }
+        }
+        #endregion
         public override int Execute(params string[] parameters)
         {          
-            int resultCode = 0;
+            int resultCode = 0;            
 
             TemplateWindow window = new TemplateWindow();
-            window.ShowDialog();         
+            window.Show();         
 
             return resultCode;
         }

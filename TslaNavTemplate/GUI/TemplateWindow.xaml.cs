@@ -1,15 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using TslaNavTemplate;
 
 namespace GUI
@@ -22,12 +12,23 @@ namespace GUI
         public TemplateWindow()
         {
             InitializeComponent();
+            Topmost = true;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnClickAddPanel(object sender, RoutedEventArgs e)
         {
             CustomPanel.AddCustomPanel("ID_TabHome");
-            this.Close();
+        }
+
+        private void BtnClickCheckDocuments(object sender, RoutedEventArgs e)
+        {
+            var docs = Autodesk.Navisworks.Api.Application.Documents;
+            string info = "Currently opened documents: " + Environment.NewLine;
+            foreach (var doc in docs)
+            {
+                info += doc.Title + Environment.NewLine;
+            }
+            MessageBox.Show(info);
         }
     }
 }
