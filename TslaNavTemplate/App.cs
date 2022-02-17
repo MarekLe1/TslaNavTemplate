@@ -1,6 +1,7 @@
 ﻿using Autodesk.Navisworks.Api;
 using Autodesk.Navisworks.Api.Plugins;
 using GUI;
+using System.Windows.Forms;
 
 namespace TslaNavTemplate
 {
@@ -8,8 +9,9 @@ namespace TslaNavTemplate
     [PluginAttribute("TslaTemplate", "TSLA", DisplayName = "Tesla template plugin")]
     //[AddInPluginAttribute(AddInLocation.AddIn, CallCanExecute = CallCanExecute.Always, CanToggle = true, Icon = "test.ico", LargeIcon = "test.ico", LoadForCanExecute = true, Shortcut = "XX", ShortcutWindowTypes = ")")]
     //[RibbonTabAttribute("Test Ribbon", CallCanExecute = CallCanExecute.Always, DisplayName = "Display test", LoadForCanExecute = true)]
-
-    public class App : AddInPlugin
+    [DockPanePluginAttribute(100,100, AutoScroll = false, FixedSize = true, MinimumHeight =300, MinimumWidth = 250)]
+    //public class App : AddInPlugin
+    public class App : DockPanePlugin
     {
         #region Configuration and assembly version
 
@@ -37,19 +39,84 @@ namespace TslaNavTemplate
             }
         }
         #endregion
-        public App()
+
+        public override Control CreateControlPane()
         {
+            HelloWorldControl control = new HelloWorldControl();
+            control.Dock = DockStyle.Fill;
 
+            control.CreateControl();
+
+            return control;
         }
 
-        public override int Execute(params string[] parameters)
-        {          
-            int resultCode = 0;            
-            
-            TemplateWindow window = new TemplateWindow();
-            window.Show();         
-
-            return resultCode;          
+        public override void DestroyControlPane(Control pane)
+        {
+            HelloWorldControl control = pane as HelloWorldControl;
+            if (control != null)
+            {
+                control.Dispose();
+            }
         }
+
+        public override void OnActivePaneChanged(bool isActive)
+        {
+            base.OnActivePaneChanged(isActive);
+        }
+
+        public override void OnVisibleChanged()
+        {
+            base.OnVisibleChanged();
+        }
+
+        public override bool TryShowHelp()
+        {
+            return base.TryShowHelp();
+        }
+
+        public override bool TryShowHelpAtScreenPoint(int x, int y)
+        {
+            return base.TryShowHelpAtScreenPoint(x, y);
+        }
+
+        public override bool TryShowHelpForHighlight()
+        {
+            return base.TryShowHelpForHighlight();
+        }
+
+        public override IWin32Window CreateHWndPane(IWin32Window parent)
+        {
+            return base.CreateHWndPane(parent);
+        }
+
+        public override void DestroyHWndPane(IWin32Window pane)
+        {
+            base.DestroyHWndPane(pane);
+        }
+
+
+        protected override void OnLoaded()
+        {
+            base.OnLoaded();
+        }
+
+        protected override void OnUnloading()
+        {
+            base.OnUnloading();
+        }
+
+        protected override bool IsSelfEnabled()
+        {
+            return base.IsSelfEnabled();
+        }
+        //public override int Execute(params string[] parameters)
+        //{          
+        //    int resultCode = 0;            
+
+        //    TemplateWindow window = new TemplateWindow();
+        //    window.Show();         
+
+        //    return resultCode;          
+        //}
     }
 }
