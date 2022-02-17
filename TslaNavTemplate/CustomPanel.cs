@@ -27,13 +27,15 @@ namespace TslaNavTemplate
             foreach (RibbonTab Tab in ComponentManager.Ribbon.Tabs)
             {
                 //get Home tab
-                if (Tab.Id == "ID_TabHome")
+                if (Tab.Id == existingTabName)
                 {
                     RibbonPanel tslaAdnPanel = new RibbonPanel();
                     //create ribbon panel source and bind it to the panel
                     RibbonPanelSource tslaAdnSource = new RibbonPanelSource();
                     tslaAdnSource.Id = "TSLA_AddinTemplatePanel";
-                    tslaAdnSource.Name = "TSLA Panel";
+                    tslaAdnSource.Name = "Tesla Plugin";
+                    tslaAdnSource.Title = "Tesla Tools";
+                    
                     tslaAdnPanel.ResizeStyle = RibbonResizeStyles.NeverHideText;
                     tslaAdnPanel.Source = tslaAdnSource;
 

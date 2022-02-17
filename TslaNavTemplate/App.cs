@@ -6,6 +6,9 @@ namespace TslaNavTemplate
 {
 
     [PluginAttribute("TslaTemplate", "TSLA", DisplayName = "Tesla template plugin")]
+    //[AddInPluginAttribute(AddInLocation.AddIn, CallCanExecute = CallCanExecute.Always, CanToggle = true, Icon = "test.ico", LargeIcon = "test.ico", LoadForCanExecute = true, Shortcut = "XX", ShortcutWindowTypes = ")")]
+    //[RibbonTabAttribute("Test Ribbon", CallCanExecute = CallCanExecute.Always, DisplayName = "Display test", LoadForCanExecute = true)]
+
     public class App : AddInPlugin
     {
         #region Configuration and assembly version
@@ -34,14 +37,19 @@ namespace TslaNavTemplate
             }
         }
         #endregion
+        public App()
+        {
+
+        }
+
         public override int Execute(params string[] parameters)
         {          
             int resultCode = 0;            
-
+            
             TemplateWindow window = new TemplateWindow();
             window.Show();         
 
-            return resultCode;
+            return resultCode;          
         }
     }
 }
